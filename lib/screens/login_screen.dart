@@ -54,59 +54,61 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
-          child: ListView(
-            children: [
-              // Correo
-              CustomTextField(
-                controller: _emailController,
-                labelText: 'Correo',
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Debe ingresar su correo';
-                  }
-                  return null;
-                },
-              ),
-              
-              const SizedBox(height: 14),
-              
-              // Constraseña
-              CustomTextField(
-                controller: _passwordController,
-                labelText: 'Contraseña',
-                isPassword: true,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Debe ingresar su contraseña';
-                  }
-                  return null;
-                },
-              ),
-          
-              const SizedBox(height: 14),
-          
-              // Boton iniciar sesion
-              ElevatedButton(
-                onPressed: _login,
-                child: const Text('Iniciar sesión')
-              ),
-              
-              const SizedBox(height: 14),
-
-              // Ir a registrarse
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('¿No tienes una cuenta?'),
-                  const SizedBox(width: 4),
-                  ClickableText(
-                    text: 'Registrate',
-                    onTap: _goToRegister
-                  )
-                ],
-              )
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                // Correo
+                CustomTextField(
+                  controller: _emailController,
+                  labelText: 'Correo',
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Debe ingresar su correo';
+                    }
+                    return null;
+                  },
+                ),
+                
+                const SizedBox(height: 14),
+                
+                // Constraseña
+                CustomTextField(
+                  controller: _passwordController,
+                  labelText: 'Contraseña',
+                  isPassword: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Debe ingresar su contraseña';
+                    }
+                    return null;
+                  },
+                ),
+            
+                const SizedBox(height: 14),
+            
+                // Boton iniciar sesion
+                ElevatedButton(
+                  onPressed: _login,
+                  child: const Text('Iniciar sesión')
+                ),
+                
+                const SizedBox(height: 14),
+            
+                // Ir a registrarse
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('¿No tienes una cuenta?'),
+                    const SizedBox(width: 4),
+                    ClickableText(
+                      text: 'Registrate',
+                      onTap: _goToRegister
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         )),
     );
