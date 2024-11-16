@@ -1,3 +1,6 @@
-# is513_tarea2_2
+# Tarea2.2 (IS513)
 
-A new Flutter project.
+- Nombre: Douglas Anthony Paz Hernandez
+- Cuenta: 20232000878
+
+**UNAH Campus Cortés**
