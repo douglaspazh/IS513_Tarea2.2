@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final String email;
+  
+  const HomeScreen({super.key,
+    required this.email
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Inicio')),
-      body: const Center(
-        child: Text('Bienvenido'),
+      body: Center(
+        child: Text('Bienvenido, $email'),
       ),
     );
   }

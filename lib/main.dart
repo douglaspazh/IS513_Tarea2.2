@@ -15,11 +15,11 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login Register',
-      initialRoute: '/register',
+      initialRoute: '/login',
       routes: {
-        '/register': (context) => const RegisterScreen(),
         '/login': (context) => const LoginScreen(),
-        '/home': (context) => const HomeScreen(),
+        '/register': (context) => const RegisterScreen(),
+        // '/home': (context) => const HomeScreen(),
       },
     );
   }
