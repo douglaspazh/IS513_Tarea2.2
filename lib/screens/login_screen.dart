@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:is513_tarea2_2/widgets/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,23 +12,45 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  void _login() {
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    if (email == 'douglas.paz@unah.hn' && password == '20232000878') {
+      Navigator.popAndPushNamed(context, '/home');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Credenciales incorrectas'))
+      );
+    }
+  }
+
+  void _goToRegister() {
+    Navigator.popAndPushNamed(context, '/register');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Inicio de Sesión')),
+      appBar: AppBar(title: const Text('Iniciar Sesión')),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
-            TextField(
+            // Correo
+            CustomTextField(
               controller: _emailController,
+              labelText: 'Correo',
+              keyboardType: TextInputType.emailAddress,
             ),
-            TextField(
+            // Constraseña
+            CustomTextField(
               controller: _passwordController,
+              labelText: 'Contraseña',
+              isPassword: true,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: _login,
               child: const Text('Iniciar sesión')
             ),
             Row(
@@ -35,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const Text('No tienes una cuenta?'),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: _goToRegister,
                   child: const Text('Registrate')
                 )
               ],
