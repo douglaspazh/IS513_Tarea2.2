@@ -13,7 +13,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _obscurePassword = true;
 
   void _login() {
     String email = _emailController.text;
@@ -40,12 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       }
     }
-  }
-
-  void _togglePasswordVisibility() {
-    setState(() {
-      _obscurePassword = !_obscurePassword;
-    });
   }
 
   void _goToRegister() {
@@ -81,11 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomTextField(
                 controller: _passwordController,
                 labelText: 'Contraseña',
-                isPassword: _obscurePassword,
-                suffixIcon: IconButton(
-                  onPressed: _togglePasswordVisibility,
-                  icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off)
-                ),
+                isPassword: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Debe ingresar su contraseña';
@@ -109,9 +98,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text('¿No tienes una cuenta?'),
-                  TextButton(
-                    onPressed: _goToRegister,
-                    child: const Text('Registrate')
+                  const SizedBox(width: 4),
+                  GestureDetector(
+                    onTap: _goToRegister,
+                    child: const Text(
+                      'Registrate',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline
+                      )
+                    ),
                   )
                 ],
               )
