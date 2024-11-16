@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:is513_tarea2_2/screens/home_screen.dart';
+import 'package:is513_tarea2_2/widgets/clickable_text.dart';
 import 'package:is513_tarea2_2/widgets/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -99,15 +100,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   const Text('¿No tienes una cuenta?'),
                   const SizedBox(width: 4),
-                  GestureDetector(
-                    onTap: _goToRegister,
-                    child: const Text(
-                      'Registrate',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline
-                      )
-                    ),
+                  ClickableText(
+                    text: 'Registrate',
+                    onTap: _goToRegister
                   )
                 ],
               )
