@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:is513_tarea2_2/widgets/clickable_text.dart';
+import 'package:is513_tarea2_2/widgets/custom_button.dart';
 import 'package:is513_tarea2_2/widgets/custom_textfield.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   // Variables regex para validar
   final _emailRegex = RegExp(r'^[a-zA-Z._-]+[a-zA-Z]+@(unah\.edu\.hn|unah\.hn)$');
   final _phoneRegex = RegExp(r'^[39]\d{7}$');
-  final _passwordRegex = RegExp(r'^(?=.*[A-Z])(?=.*[!@#$%^&*:;<>/-]).{8,}$');
+  final _passwordRegex = RegExp(r'^(?=.*[A-Z])(?=.*\W).{8,}$');
 
   void _goToLogin() {
     Navigator.pushReplacementNamed(context, '/login');
@@ -44,13 +45,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Registrarse')),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 16),
+                const Icon(
+                  Icons.person_add_alt_outlined,
+                  size: 80,
+                  color: Colors.white
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Crear cuenta',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 24),
+
                 // Nombre
                 CustomTextField(
                   controller: _nameController,
@@ -136,12 +154,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 14),
                 
                 // Boton registrarse
-                ElevatedButton(
-                  onPressed: _register,
-                  child: const Text('Registrarse')
+                CustomButton(
+                  text: 'Registrarse',
+                  onPressed: _register
                 ),
                 
-                const SizedBox(height: 8),
+                const SizedBox(height: 16),
+                const Divider(height: 1),
+                const SizedBox(height: 16),
             
                 // Opción para iniciar sesion
                 Row(

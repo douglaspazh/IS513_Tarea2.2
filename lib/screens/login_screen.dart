@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:is513_tarea2_2/screens/home_screen.dart';
 import 'package:is513_tarea2_2/widgets/clickable_text.dart';
+import 'package:is513_tarea2_2/widgets/custom_button.dart';
 import 'package:is513_tarea2_2/widgets/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -50,13 +51,31 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Iniciar Sesión')),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 50),
+                
+                const Icon(
+                  Icons.person_outline,
+                  size: 80,
+                  color: Colors.white
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Iniciar Sesión',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 24),
+
                 // Correo
                 CustomTextField(
                   controller: _emailController,
@@ -88,18 +107,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 14),
             
                 // Boton iniciar sesion
-                ElevatedButton(
+                CustomButton(
+                  text: "Iniciar sesión",
                   onPressed: _login,
-                  child: const Text('Iniciar sesión')
                 ),
                 
-                const SizedBox(height: 14),
+                const SizedBox(height: 16),
+                const Divider(height: 1),
+                const SizedBox(height: 16),
             
                 // Ir a registrarse
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('¿No tienes una cuenta?'),
+                    const Text(
+                      '¿No tienes una cuenta?',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     const SizedBox(width: 4),
                     ClickableText(
                       text: 'Registrate',
@@ -110,7 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-        )),
+        )
+      ),
     );
   }
 }

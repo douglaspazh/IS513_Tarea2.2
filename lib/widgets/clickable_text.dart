@@ -19,8 +19,8 @@ class ClickableText extends StatelessWidget {
         text,
         style: style ?? 
           const TextStyle(
-            color: Colors.blue,
-            decoration: TextDecoration.underline,
+            color: Color(0xFF6C63FF),
+            fontWeight: FontWeight.bold,
           ),
       ),
     );
